@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+    <div class="main-body">
+        <div class="main-inner">
+             <h1>My Calculator</h1>
+            <div class="ans-display">
+                <input class="display-box" type="text" id="result" disabled />
+            </div>
+
+            <div class="digit">
+             <span >
+                <input type="button" value="0" onclick="display('0')" />
+             </span>
+             <span>
+                <input type="button" value="1" onclick="display('1')" />
+             </span>
+             <span>
+                <input type="button" value="2" onclick="display('2')" />
+             </span>
+             <span>
+                <input type="button" value="3" onclick="display('3')" />
+             </span>
+             <span>
+                <input type="button" value="4" onclick="display('4')" />
+             </span>
+             <span>
+                <input type="button" value="5" onclick="display('5')" />
+             </span>
+             <span>
+                <input type="button" value="6" onclick="display('6')" />
+             </span>
+             <span>
+                <input type="button" value="7" onclick="display('7')" />
+             </span>
+             <span>
+                <input type="button" value="8" onclick="display('8')" />
+             </span>
+             <span>
+                <input type="button" value="9" onclick="display('9')" />
+             </span>
+            </div>
+
+            <div class="operators">
+                <span>
+                    <input type="button" value="Add" onclick="display('+')" />
+                 </span>
+                 <span>
+                    <input type="button" value="Sub" onclick="display('-')" />
+
+                 </span>
+                 <span>
+                    <input type="button" value="Div" onclick="display('/')" />
+                 </span>
+                 <span>
+                    <input type="button" value="Multiply" onclick="display('*')" />
+                 </span>
+            </div>
+
+            <div class="answer-container">
+                <input type="button" value="Clear" onclick="clearScreen()" id="btn" />
+                <input type="button" value="Ans" onclick="calculate()" id="btn" />
+            </div>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
