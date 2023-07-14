@@ -1,31 +1,27 @@
-// document.querySelector('#add-button').onclick = function(){
-//     if(document.querySelector('#input-para').value.length == 0){
-//         alert("Kindly Enter Task Name!!!!")
-//     }
-
-//     else{
-//         document.querySelector('#task-add').innerHTML += `
-        // <div class="to-do-list" >
-        // <ul class="task-list">
-        //     <li> ${document.querySelector('#input-para').value} </li>
-        // </ul>
-      
-        //     <button id="delete-button">Delete</button>
-        
-        // </div>
-//         `;
-
-//         var current_tasks = document.querySelectorAll("#delete-button");
-//         for(var i=0; i<current_tasks.length; i++){
-//             current_tasks[i].onclick = function(){
-//                 this.parentNode.remove();
-//             }
-//         }
-//     }
-// }
 let count=0;
 let arr=[];
 let input_list= document.getElementById("input-para");
+
+// fetching data
+
+fetch('https://jsonplaceholder.typicode.com/todos')
+.then((response)=>{
+    if(!response.ok){
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+})
+.then((data)=>{
+
+    data.forEach((item)=>{
+        // pushing title and tilte id into array
+        arr.push({id:`${item.id}`,task: `${item.title}`});
+    })
+    show();
+})
+.catch(error=>{
+    console.log('Error:',error.message);
+});
 
 function add(){
     if(input_list.value.length===0)
