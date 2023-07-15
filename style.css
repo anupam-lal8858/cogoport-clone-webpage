@@ -1203,4 +1203,83 @@ h3 {
 .footer-small-box a:hover{
   text-decoration: underline;
   color: #ee3425;
+  
+}
+
+@media screen and (max-width:800px){
+  header{
+    display:flex;
+    flex-direction: column;
+    font-size: smaller;
+  }
+  .nav-offer{
+    font-size: smaller;
+  }
+  .footer-1{
+   font-size: smaller;
+  }
+  .style-main-body-inner{
+    width: 100%;
+  }
+  .style-advertisement-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  }
+  .style-advertisement-container video{
+    
+    width: 100%;
+  }
+  .all-container-width.all-fixed-container {
+    width: 50%;
+}
+.product-main-body{
+  width: 50%;
+}
+.industries-container{
+  font-size: smaller;
+}
+
+div{
+  font-size:medium;
+}
+h1 h2 h3 h4 h5 h6{
+  font-size: .70rem;
+}
+
+.product-container-outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.styles_industries_container1 {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-around;
+}
+.all-container-size{
+  width:50%;
+}
+.how-it-work-outer{
+  display: flex;
+  flex-direction: column;
+
+}
+.how-it-work-arrow{
+
+visibility: hidden;
+}
+.footer-1 .footer2 .footer3{
+  font-size: smaller;
+}
+.footer3{
+  font-size:small;
+}
+.styles_video_thumbnail__pOb6D{
+  width:50%;
+}
+.styles-container-trade{
+  width: 50%;
+}
 }
