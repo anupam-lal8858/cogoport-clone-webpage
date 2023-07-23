@@ -15,6 +15,8 @@
       <input type="text" id="new-todo" placeholder="Add new task...">
       <input type="date" id="due-date" placeholder="Due Date (Optional)">
 
+      <input type="text" id="tags" placeholder="Enter tags (comma-separated)">
+
       <!-- Asking for the priority  -->
       <select id="priority-select">
         <option value="low">Low</option>
@@ -36,7 +38,6 @@
         </select>
         <button onclick="searchTodos()">Search</button>
     </div>
-     
     <!-- filter bar  -->
       <div class="search-section">
         <label for="due-date-filter">Due Date:</label>
@@ -56,12 +57,24 @@
           <option value="high">High</option>
         </select>
       </div>
+    <!-- ... (existing HTML code) ... -->
+
+<!-- Reminder Section -->
+<div class="section reminder-class" >
+  <h2>Set Reminder</h2>
+  <label for="reminder-time">Reminder Time:</label>
+  <input type="datetime-local" id="reminder-time">
+  <button onclick="setReminder()">Set Reminder</button>
+</div>
 
      <!-- Pending todo list    -->
-    <h2 style="color:#007bff;">Pending Todos</h2>
-    <div id="todo-list">
-     
-    </div>
+     <div class="pending-section">
+      <h2>Pending Todos</h2>
+      <div id="todo-list">
+       
+      </div>
+     </div>
+   
     <!-- Completed todo list  -->
     <div class="completed-section">
       <h2>Completed Todos</h2>
@@ -71,6 +84,12 @@
     <div class="expired-section">
       <h2>Expired Todos</h2>
       <div id="expired-section"></div>
+    </div>
+    <div class="section">
+      <h2>Activity Logs</h2>
+      <div id="activity-logs">
+        <!-- Activity logs will be dynamically added here -->
+      </div>
     </div>
   </div>
   <script src="script.js"></script>

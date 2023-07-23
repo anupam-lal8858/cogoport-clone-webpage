@@ -13,18 +13,59 @@ body {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
+  h2{
+    color:#007bff;
+  }
   h1 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
   }
-  
   .input-section {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    border: 2px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
   }
+  
+  /* Style input elements inside input-section class */
+  .input-section input[type="text"],
+  .input-section input[type="date"],
+  .input-section select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  
+  /* Style buttons inside input-section class */
+  .input-section button {
+ 
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    padding: 10px 20px;
+    margin-left: 10px;
+  
+   
+   
+  }
+  
+  .input-section button:hover {
+    background-color: #0056b3;
+  }
+  
   
   .input-section input[type="text"],
   .input-section input[type="date"] {
@@ -34,45 +75,85 @@ body {
     border-radius: 4px;
   }
 
-  .input-section button {
-    padding: 10px 20px;
-    margin-left: 10px;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
   .search-section {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
   }
   
+  /* Style search input inside search-section class */
   .search-section input[type="text"] {
     flex-grow: 1;
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 14px;
   }
   
+  /* Style search button inside search-section class */
+  .search-section button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-section button:hover {
+    background-color: #0056b3;
+  }
+  
+
   .search-section select {
     padding: 10px;
     margin-right: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
-  .search-section button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
+
+
+  .section, .completed-section, .expired-section, .pending-section{
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
   }
   
+  h2 {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="datetime-local"] {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .reminder-class button{
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    
+  }
   .todo-item {
     display: flex;
     align-items: center;
@@ -181,3 +262,29 @@ body {
   .delete-button {
     background-color: red !important;
   }
+
+
+/* Responsive styles for small screens */
+
+@media screen and (max-width: 600px) {
+ 
+  .todo-item {
+    font-size: 14px;
+  }
+
+  .todo-item .tags-container {
+    font-size: 12px;
+  }
+
+ 
+  .todo-item {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+ 
+  .todo-item span,
+  .todo-item button {
+    text-align: center;
+  }
+}

@@ -1,5 +1,6 @@
 
 let todos = [];
+let activityLogs = [];
 
 // Initialize the app by rendering the todos from local storage (if present)
 const storedTodos = JSON.parse(localStorage.getItem('todos'));
@@ -57,7 +58,9 @@ function addTodo() {
     input.value = '';
     dueDateInput.value = '';
     prioritySelect.value = 'low';
-
+   
+    addActivityLog(todo.text, 'Task is Added');
+      
     // Update the UI to display the newly added todo
     renderTodos();
 }
@@ -97,7 +100,9 @@ function createTodoItem(todo) {
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.classList.add('delete-button');
-    deleteButton.addEventListener('click', () => deleteTodo(todo.id));
+    deleteButton.addEventListener('click', () => {
+        addActivityLog(todo.text, 'Task is deleted');
+        deleteTodo(todo.id)});
     todoItem.appendChild(deleteButton);
 
     return todoItem;
@@ -109,6 +114,11 @@ function toggleTodoCompletion(todoId) {
     const todo = todos.find(todo => todo.id === todoId);
     if (todo) {
         todo.completed = !todo.completed;
+        if(todo.completed)
+        addActivityLog(todo.text, 'Marked as Done');
+        else
+        addActivityLog(todo.text, 'Marked as Undone');
+
         renderTodos();
     }
 }
@@ -181,6 +191,7 @@ function showEditForm(todoId) {
         todoText.textContent = todo.text;
         todoText.style.display = 'inline'; // Show the updated todo text
         todoItem.removeChild(editForm);
+        addActivityLog(todo.text, 'Task is edited!');
     });
     editForm.appendChild(saveButton);
 
@@ -239,8 +250,27 @@ function renderFilteredTodos(filteredTodos) {
 
     });
 }
+// Function to add an activity log
+function addActivityLog(todoText, activity) {
+    const timestamp = new Date().toLocaleString();
+    const activityLog = {
+      timestamp: timestamp,
+      text: `${activity} - "${todoText}"`,
+    };
+    activityLogs.push(activityLog);
+  }
 
-
+// Function to display activity logs
+function displayActivityLogs() {
+    const activityLogsContainer = document.getElementById('activity-logs');
+    activityLogsContainer.innerHTML = '';
+  
+    activityLogs.forEach(log => {
+      const logItem = document.createElement('div');
+      logItem.textContent = `${log.timestamp}: ${log.text}`;
+      activityLogsContainer.appendChild(logItem);
+    });
+  }
 // Attach event listener to the search button
 document.getElementById('search-bar').addEventListener('keyup', function (event) {
     if (event.key === 'Enter') {
@@ -329,7 +359,9 @@ function renderTodos() {
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
         deleteButton.classList.add('delete-button');
-        deleteButton.addEventListener('click', () => deleteTodo(todo.id));
+        deleteButton.addEventListener('click', () => {
+            addActivityLog(todo.text, 'Task is deleted');
+            deleteTodo(todo.id)});
         todoItem.appendChild(deleteButton);
 
         todoList.appendChild(todoItem);
@@ -356,6 +388,6 @@ function renderTodos() {
         const todoItem = createTodoItem(todo);
         expiredSection.appendChild(todoItem);
     });
-
+ displayActivityLogs();
 
 }

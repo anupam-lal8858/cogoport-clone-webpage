@@ -11,6 +11,17 @@ The following function which is implemented by me are given below:
 8. Priority
 9. View backlogs
 10. Search
-11. 
+11. Activity logs
+12. Tags(only frontend)
+13. Date Auto completed- It takes due date from the input date and changes its validity corresponding to it.
+14. Reminders (only frontend)
+
+
+What not done 
+
+1. Add category
+2. Filters (backend is not done)
+3. Subtask
+4. Reminders (backend)
 
 
