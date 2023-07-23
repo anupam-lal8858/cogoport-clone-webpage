@@ -1,14 +1,11 @@
 
 let todos = [];
 let activityLogs = [];
-
-// Initialize the app by rendering the todos from local storage (if present)
 const storedTodos = JSON.parse(localStorage.getItem('todos'));
 if (storedTodos) {
     todos = storedTodos;
     renderTodos();
 }
-
 // Save todos to local storage whenever there is a change
 function saveToLocalStorage() {
     localStorage.setItem('todos', JSON.stringify(todos));
@@ -130,7 +127,7 @@ function deleteTodo(todoId) {
     renderTodos();
 }
 
-// Function to create an "Edit" button for a todo
+// Function to create an Edit button for a todo
 function createEditButton(todoId) {
     const editButton = document.createElement('button');
     editButton.textContent = 'Edit';
@@ -237,6 +234,14 @@ function searchTodos() {
     // Update the UI to display the filtered todos
     renderFilteredTodos(filteredTodos);
 }
+// Attach event listener to the search button
+document.getElementById('search-bar').addEventListener('keyup', function (event) {
+    if (event.key === 'Enter') {
+        searchTodos();
+    }
+});
+
+document.getElementById('search-options').addEventListener('change', searchTodos);
 
 // Function to render filtered todos in the UI
 function renderFilteredTodos(filteredTodos) {
@@ -271,14 +276,6 @@ function displayActivityLogs() {
       activityLogsContainer.appendChild(logItem);
     });
   }
-// Attach event listener to the search button
-document.getElementById('search-bar').addEventListener('keyup', function (event) {
-    if (event.key === 'Enter') {
-        searchTodos();
-    }
-});
-
-document.getElementById('search-options').addEventListener('change', searchTodos);
 
 
 // Function to mark a todo as done

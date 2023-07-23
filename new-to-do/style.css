@@ -32,7 +32,6 @@ body {
     box-sizing: border-box;
   }
   
-  /* Style input elements inside input-section class */
   .input-section input[type="text"],
   .input-section input[type="date"],
   .input-section select {
@@ -45,7 +44,6 @@ body {
     font-size: 14px;
   }
   
-  /* Style buttons inside input-section class */
   .input-section button {
  
     border: none;
@@ -85,7 +83,6 @@ body {
     box-sizing: border-box;
   }
   
-  /* Style search input inside search-section class */
   .search-section input[type="text"] {
     flex-grow: 1;
     width: 100%;
@@ -96,7 +93,6 @@ body {
     font-size: 14px;
   }
   
-  /* Style search button inside search-section class */
   .search-section button {
     padding: 10px 15px;
     border: none;
@@ -119,7 +115,6 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-
 
   .section, .completed-section, .expired-section, .pending-section{
     margin-top: 20px;
