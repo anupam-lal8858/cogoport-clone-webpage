@@ -4,7 +4,7 @@ let currentPage = 1;
 let totalResults = 0;
 
 // Initial fetch when the page loads
-fetchMovies('hello', 1);
+fetchMovies();
 
 function fetchMovies(searchText = '', page = 1) {
     const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchText}&page=${page}`;
@@ -43,9 +43,13 @@ function updatePagination() {
     const totalPages = Math.ceil(totalResults / moviesPerPage);
 
     let paginationHTML = '';
-    for (let i = 1; i <= totalPages; i++) {
+  
+    paginationHTML+=`<button onclick="goToPage(${currentPage>1?currentPage-1:1})">Prev</button>`
+    for (let i = 1; i <= (totalPages<15?totalPages:15); i++) {
         paginationHTML += `<button onclick="goToPage(${i})">${i}</button>`;
     }
+  
+    paginationHTML+=`<button onclick="goToPage(${currentPage<totalPages?currentPage+1:totalPages})">Next</button>`
     paginationElement.innerHTML = paginationHTML;
 }
 
