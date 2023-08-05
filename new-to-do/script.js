@@ -15,6 +15,7 @@ function saveToLocalStorage() {
 document.addEventListener('change', saveToLocalStorage);
 document.addEventListener('click', saveToLocalStorage);
 
+
 // Helper function to get the current date
 function getCurrentDate() {
     const now = new Date();
@@ -37,6 +38,11 @@ function addTodo() {
     const prioritySelect = document.getElementById('priority-select');
     const priority = prioritySelect.value;
 
+    const tagsValue= document.getElementById('tags');
+    const tags=tagsValue.value;
+
+    // const subTask= 
+
     // Create a new todo object with necessary details
     const todo = {
         id: Date.now(), 
@@ -45,16 +51,18 @@ function addTodo() {
         completed: false,
         expired: false,
         priority: priority,
-        subtasks: []
+        tags:tags,
+       
     };
 
-    // Add the todo to the list (you can use a more advanced data structure to manage todos)
+    // Add the todo to the list 
     todos.push(todo);
 
     // Clear input field
     input.value = '';
     dueDateInput.value = '';
     prioritySelect.value = 'low';
+    tags.value='';
    
     addActivityLog(todo.text, 'Task is Added');
       
@@ -66,6 +74,7 @@ function addTodo() {
 function createTodoItem(todo) {
     const todoItem = document.createElement('div');
     todoItem.classList.add('todo-item');
+    todoItem.id = `todo-${todo.id}`;
 
     // Add checkbox for completion status
     const checkbox = document.createElement('input');
@@ -76,6 +85,7 @@ function createTodoItem(todo) {
 
     // Create a span to display the todo text
     const todoText = document.createElement('span');
+   
     todoText.textContent = todo.text;
     todoItem.appendChild(todoText);
 
@@ -93,6 +103,16 @@ function createTodoItem(todo) {
         todoItem.appendChild(priority);
     }
 
+    if(todo.tags){
+        const tags=document.createElement('span');
+        tags.textContent=`Tags: ${todo.tags}`;
+        todoItem.appendChild(tags);
+    }
+
+    // create edit button
+    const editButton = createEditButton(todo.id);
+    todoItem.appendChild(editButton);
+
     // Create a button to delete the todo
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
@@ -100,7 +120,7 @@ function createTodoItem(todo) {
     deleteButton.addEventListener('click', () => {
         addActivityLog(todo.text, 'Task is deleted');
         deleteTodo(todo.id)});
-    todoItem.appendChild(deleteButton);
+        todoItem.appendChild(deleteButton);
 
     return todoItem;
 }
@@ -170,7 +190,7 @@ function showEditForm(todoId) {
     // Input field for due date
     const dueDateInput = document.createElement('input');
     dueDateInput.type = 'date';
-    dueDateInput.value = todo.dueDate || getCurrentDate();
+    dueDateInput.value = dueDateInput.value || todo.dueDate || getCurrentDate();
     editForm.appendChild(dueDateInput);
 
     // Save button
@@ -183,7 +203,7 @@ function showEditForm(todoId) {
         editTodo(todoId, newText, newDueDate);
         todo.text = newText; // Update the todo text immediately for display
         if (newDueDate) {
-            todo.text += ` (Due: ${newDueDate})`;
+            todo.dueDate=newDueDate;
         }
         todoText.textContent = todo.text;
         todoText.style.display = 'inline'; // Show the updated todo text
@@ -294,7 +314,8 @@ function getCompletedTodos() {
 
 // Function to get pending (uncompleted) todos
 function getPendingTodos() {
-    return todos.filter(todo => !todo.completed&& !todo.expired);
+    // return todos;
+     return todos.filter(todo => (!todo.completed && !todo.expired));
 }
 
 // function to filter expired todos
@@ -307,60 +328,15 @@ function filterExpiredTodos() {
 
 // Function to render the list of todos in the UI
 function renderTodos() {
+
     const todoList = document.getElementById('todo-list');
     todoList.innerHTML = '';
 
     //rendering pending todo section
     const pendingTodos = getPendingTodos();
     pendingTodos.forEach(todo => {
-
-        const todoItem =
-        
-        document.createElement('div');
-        todoItem.classList.add('todo-item');
-        todoItem.id = `todo-${todo.id}`;
-
-        // Add checkbox for completion status
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.checked = todo.completed;
-        checkbox.addEventListener('change', () => toggleTodoCompletion(todo.id));
-        todoItem.appendChild(checkbox);
-
-        // Display the todo text
-        const todoText = document.createElement('span');
-        todoText.textContent = todo.text;
-        todoItem.appendChild(todoText);
-
-        // Display the due date (if present)
-        if (todo.dueDate) {
-            const dueDateText = document.createElement('span');
-            dueDateText.classList.add('due-date');
-            dueDateText.textContent = ` (Due: ${todo.dueDate})`;
-            todoItem.appendChild(dueDateText);
-        }
-
-        // Add priority if available
-        if (todo.priority) {
-            const priority = document.createElement('span');
-            priority.textContent = `Priority: ${todo.priority}`;
-            todoItem.appendChild(priority);
-        }
-
-        // Add "Edit" button
-
-        const editButton = createEditButton(todo.id);
-        todoItem.appendChild(editButton);
-
-        // Add delete button
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.classList.add('delete-button');
-        deleteButton.addEventListener('click', () => {
-            addActivityLog(todo.text, 'Task is deleted');
-            deleteTodo(todo.id)});
-        todoItem.appendChild(deleteButton);
-
+         
+        const todoItem =createTodoItem(todo);
         todoList.appendChild(todoItem);
     });
 

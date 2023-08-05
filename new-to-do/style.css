@@ -7,7 +7,7 @@ body {
   }
   
   .container {
-    max-width: 600px;
+    max-width: 700px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -24,6 +24,7 @@ body {
   .input-section {
     display: flex;
     align-items: center;
+    flex-direction: column;
     margin-bottom: 20px;
     border: 2px solid #ccc;
     padding: 10px;
@@ -75,7 +76,8 @@ body {
 
   .search-section {
     display: flex;
-    align-items: center;
+    justify-content: space-around;
+    align-items:baseline;
     margin-bottom: 20px;
     border: 2px solid #ccc;
     padding: 10px;
@@ -115,8 +117,12 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+  .search-section span{
+    color: #007bff;
+  }
 
   .section, .completed-section, .expired-section, .pending-section{
+   
     margin-top: 20px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -151,9 +157,12 @@ body {
   }
   .todo-item {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: baseline;
     padding: 10px;
-    border-bottom: 1px solid #ccc;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
   }
   
   .todo-item input[type="checkbox"] {
@@ -163,6 +172,7 @@ body {
   .todo-item span {
     flex-grow: 1;
     cursor: pointer;
+    
   }
   
   .todo-item button {
