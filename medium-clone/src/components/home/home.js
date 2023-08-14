@@ -3,10 +3,12 @@ import PostList from '../home/postList'
 import { Link } from "react-router-dom";
 import Recomendation from "./recomendation";
 
+
 function Home() {
+ 
   return (
     <div className="">
-
+      
       <div className="bg-yellow-100" style={{borderBottom:'1px solid black'}}>
         <div className="flex justify-between ">
           <div className="ml-60 flex flex-col items-start justify-center h-200">

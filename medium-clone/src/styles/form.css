@@ -26,11 +26,12 @@
   }
   
 .container {
-    position: fixed;
+    /* position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 100px;
+    bottom: 100px; */
+   
     background-color: #efedee;
     display: flex;
     justify-content: center;
@@ -39,7 +40,7 @@
 
   .modal {
     width: 100%;
-    /* height: 60px; */
+   
     background: rgba(51, 51, 51, 0.5);
     display: flex;
     flex-direction: column;
@@ -53,7 +54,7 @@
     width: 100%;
     border-radius: 10px;
     overflow: hidden;
-    position: absolute;
+    /* position: absolute; */
 
     transition-duration: 0.3s;
     background: #fff;

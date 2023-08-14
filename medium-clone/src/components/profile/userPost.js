@@ -88,7 +88,7 @@ function UserPost() {
                     <img
                       className="min-w-2/3 h-64 flex-shrink-0 rounded-lg"
                       src={post.FeaturedImage}
-                      alt="feature image"
+                      alt="feature"
                     />
                   </div>
                 </div>

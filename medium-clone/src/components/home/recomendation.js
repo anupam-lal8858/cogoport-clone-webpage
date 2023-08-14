@@ -4,6 +4,15 @@ import { Link } from "react-router-dom";
 
 function Recomendation() {
 
+  // const [post,setData]=useState([]);
+
+  // useEffect(() => {
+  //   // Fetch data when the component mounts
+  //   fetch('http://127.0.0.1:3000/recommendedPosts')
+  //     .then(response => response.json())
+  //     .then(data => setData(data))
+  //     .catch(error => console.error('Error fetching data:', error));
+  // }, []);
 
   const posts = [
     {
@@ -59,9 +68,13 @@ function Recomendation() {
     },
   ];
 
+// console.log(
+//   'recommonded post', post
+// );
+
   return (
     <div class="p-20 mt-20"> 
-    <h1 className='text-blue-950 font-bold text-3xl mb-5'>Top articlea for you</h1>
+    <h1 className='text-blue-950 font-bold text-3xl mb-5'>Recommended articles for you</h1>
     <div className="flex mr-10 w-full overflow-x-auto ">
        {posts.map((post) => {
          return (

@@ -4,8 +4,6 @@ import UserPost from './userPost'
 import QuickLinks from './quickLinks'
 
 function Profile() {
-
-
   return (
    <>
     <div className='flex flex-col'>

@@ -10,14 +10,17 @@ function Topic() {
         'Fitness',
         'Yoga',
         'Gym',
-        'Food'
+        'Food',
+        'Science',
+        'Beuty',
+        'history'
     ]
 
 
     return (
         <div>
             <div className='m-5 p-5'>
-                <div class="p-5 m-5  flex rounded bg-yellow-100">
+                {/* <div class="p-5 m-5  flex rounded bg-yellow-100">
                     <input class="h-10 w-60  rounded"type='text' placeholder='apply filter'></input>
                     <select name="category" id="category">
                         <option value="author">Author</option>
@@ -25,7 +28,7 @@ function Topic() {
                         <option value="date">Date</option>
                         <option value="text">Text</option>
                     </select>
-                </div>
+                </div> */}
 
                 <div>
                     <h1 className='text-black font-bold text-3xl mb-3 '>Discover more about specific topics</h1>

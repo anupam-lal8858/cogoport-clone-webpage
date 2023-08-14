@@ -1,41 +1,58 @@
-import React, { useState } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import { signUpSchema } from "../form_validation";
 import '../../styles/form.css'
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const SignUp = () => {
-  
+  const navigate= useNavigate();
   const initialValues = {
     name: "",
     email: "",
     password: "",
     confirm_password: "",
+    interests:"",
+    specializations:"",
   };
   
-  const [formData , setFormData] = useState('')
+  // const [formData , setFormData] = useState('')
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+  const { values, errors, touched, handleBlur, handleChange,handleSubmit } =
     useFormik({
       initialValues,
       validationSchema: signUpSchema,
       onSubmit: (values, action) => {
-          setFormData(values)
+          // setFormData(values)
+          if (values) {
+               axios
+              .post('http://127.0.0.1:3000/users', values)
+              .then((response) => {
+                // Handle success response here
+                const token=response.data.token;
+                console.log('Registered token',token);
+                alert('Login succeccfully');
+                navigate('/signin');
+               
+                
+              })
+              .catch((error) => {
+                // Handle error here
+                console.error(error);
+                alert('Please try again!');
+              });
+          }
+        // alert(formData.name);  
         action.resetForm();
       },
+     
     });
-  console.log(
-    "~ file: SignUp.js ~ errors",
-    errors
-  );
 
-
-  console.log(formData)
-
+   
   return (
     <>
-        <div className="container mt-40">
+        <div className="container ">
           <div className="modal">
             <div className="modal-container">
               <div className="modal-left">
@@ -115,6 +132,40 @@ const SignUp = () => {
                     {errors.confirm_password && touched.confirm_password ? (
                       <p className="form-error">{errors.confirm_password}</p>
                     ) : null}
+                  </div>
+
+                  <div className="input-block">
+                    <label htmlFor="interests" className="input-label">
+                      Interests
+                    </label>
+                    <input
+                      type="text"
+                      autoComplete="off"
+                      name="interests"
+                      id="interests"
+                      placeholder="interests"
+                      value={values.interests}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    
+                  </div>
+
+                  <div className="input-block">
+                    <label htmlFor="specializations" className="input-label">
+                     Specializations
+                    </label>
+                    <input
+                      type="text"
+                      autoComplete="off"
+                      name="specializations"
+                      id="specializations"
+                      placeholder="specializations"
+                      value={values.specializations}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                   
                   </div>
                   <div className="modal-buttons">
                     <button className="input-button" type="submit">

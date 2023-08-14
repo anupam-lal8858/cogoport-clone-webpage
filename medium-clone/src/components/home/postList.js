@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import image from "./medium.png";
+import image_url from "./medium.png";
 import TopPost from "./topPost";
 import Topic from "./topic";
 import { useEffect, useState } from "react";
@@ -8,71 +8,73 @@ import { useEffect, useState } from "react";
 
 function PostList() {
   
-  // const [posts,setData]=useState([]);
+  const [posts,setData]=useState([]);
 
-  // useEffect(() => {
-  //   // Fetch data when the component mounts
-  //   fetch('http://127.0.0.1:3000/articles/all')
-  //     .then(response => response.json())
-  //     .then(data => setData(data))
-  //     .catch(error => console.error('Error fetching data:', error));
-  // }, []); 
-
-  const posts = [
-    {
-      id:"1",
-      Title: "Special Report: Extreme Heat and Human Health",
-      Author: "John Doe",
-      Date: "August 3, 2023",
-      Time: "19 min",
-      Topic: "Science",
-      FeaturedImage: image,
-      postData:
-        "Excessive heat is pushing the limits of human tolerability. In more than a dozen articles, Wise & Well examines how hot is too hot...",
-    },
-    {
-      id:"2",
-      Title: "Sample Post 2",
-      Author: "John Smith",
-      Date: "August 3, 2023",
-      Time: "12 min",
-      Topic: "College",
-      FeaturedImage: image,
-      postData: "Science is a neutral, rigorous, systematic endeavor that builds and organizes knowledge in the form of testable explanations and predictions about the universe.",
-    },
-    {
-      id:"3",
-      Title: "Sample Post 3",
-      Author: "John Hello",
-      Date: "August 3, 2023",
-      Time: " 10 min",
-      Topic: "Environment",
-      FeaturedImage: image,
-      postData: "This is the content of Sample Post 3...",
-    },
-    {
-      id:"2",
-      Title: "Sample Post 2",
-      Author: "John Smith",
-      Date: "August 3, 2023",
-      Time: "12 min",
-      Topic: "College",
-      FeaturedImage: image,
-      postData: "This is the content of Sample Post 2...",
-    },
-    {
-      id:"3",
-      Title: "Sample Post 3",
-      Author: "John Hello",
-      Date: "August 3, 2023",
-      Time: " 10 min",
-      Topic: "Environment",
-      FeaturedImage: image,
-      postData: "This is the content of Sample Post 3...",
-    },
-  ];
+  useEffect(() => {
+    // Fetch data when the component mounts
+    fetch('http://127.0.0.1:3000/articles/all')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []); 
 
   console.log(posts);
+
+  // const posts = [
+  //   {
+  //     id:"1",
+  //     Title: "Special Report: Extreme Heat and Human Health",
+  //     Author: "John Doe",
+  //     Date: "August 3, 2023",
+  //     Time: "19 min",
+  //     Topic: "Science",
+  //     FeaturedImage: image,
+  //     postData:
+  //       "Excessive heat is pushing the limits of human tolerability. In more than a dozen articles, Wise & Well examines how hot is too hot...",
+  //   },
+  //   {
+  //     id:"2",
+  //     Title: "Sample Post 2",
+  //     Author: "John Smith",
+  //     Date: "August 3, 2023",
+  //     Time: "12 min",
+  //     Topic: "College",
+  //     FeaturedImage: image,
+  //     postData: "Science is a neutral, rigorous, systematic endeavor that builds and organizes knowledge in the form of testable explanations and predictions about the universe.",
+  //   },
+  //   {
+  //     id:"3",
+  //     Title: "Sample Post 3",
+  //     Author: "John Hello",
+  //     Date: "August 3, 2023",
+  //     Time: " 10 min",
+  //     Topic: "Environment",
+  //     FeaturedImage: image,
+  //     postData: "This is the content of Sample Post 3...",
+  //   },
+  //   {
+  //     id:"2",
+  //     Title: "Sample Post 2",
+  //     Author: "John Smith",
+  //     Date: "August 3, 2023",
+  //     Time: "12 min",
+  //     Topic: "College",
+  //     FeaturedImage: image,
+  //     postData: "This is the content of Sample Post 2...",
+  //   },
+  //   {
+  //     id:"3",
+  //     Title: "Sample Post 3",
+  //     Author: "John Hello",
+  //     Date: "August 3, 2023",
+  //     Time: " 10 min",
+  //     Topic: "Environment",
+  //     FeaturedImage: image,
+  //     postData: "This is the content of Sample Post 3...",
+  //   },
+  // ];
+
+  // console.log(posts);
 
   return (
     <>
@@ -93,19 +95,19 @@ function PostList() {
               <Link to ={post.id} className="flex p-10 justify-center items-center w-full  mb-8 bg-yellow-100 shadow-md shadow-gray-300  hover:bg-purple-200 hover:ease-in duration-300 hover:scale-95">
                 <div className="p-4 m-4 rounded-md w-full">
                   <div className="p-2 font-bold text-2xl">
-                    <h2>{post.Author}</h2>
+                    <h2>{post.author.name}</h2>
                   </div>
                   <div className="w-full text-left pr-10">
-                    <h1 className="font-bold text-4xl">{post.Title}</h1>
+                    <h1 className="font-bold text-4xl">{post.title}</h1>
                   </div>
                   <div className="w-full text-justify mt-1 mb-1 pr-10 h-16">
-                    <p className="text-gray-600">{post.postData}</p>
+                    <p className="text-gray-600">{post.description}</p>
                   </div>
 
                   <div className="w-full mt-16">
-                    <span className="mr-3 font-light">{post.Date}</span>
-                    <span className="mr-3 font-light">{post.Time}</span>
-                    <span className="mr-3 font-bold text-blue-500">{post.Topic}</span>
+                    <span className="mr-3 font-light">{post.created_at.substring(0,10)}</span>
+                    <span className="mr-3 font-light">{post.created_at.substring(11,16)}</span>
+                    <span className="mr-3 font-bold text-blue-500">{post.genre}</span>
                   </div>
                 </div>
 
@@ -113,8 +115,8 @@ function PostList() {
                   <div className="w-full flex justify-center items-center overflow-hidden">
                     <img
                       className="min-w-2/3 h-64 flex-shrink-0 rounded-lg"
-                      src={post.FeaturedImage}
-                      alt="feature image"
+                      src={image_url}
+                      alt="feature"
                     />
                   </div>
                 </div>
