@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios';
 
 function UserDetail() {
 
@@ -11,6 +12,32 @@ function UserDetail() {
     }
   ]
 
+  const jwtToken = localStorage.getItem('token');
+  console.log(jwtToken);
+
+  // Set headers with the JWT token
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+
+  axios.post('http://127.0.0.1:3000/profile', {},{headers})
+  .then((response) => {
+    // Handle success response here
+     const token = response.data;
+    // localStorage.setItem('token', token);
+    // console.log('SignIn', token);
+    // alert('SignIn succeccful!');
+    // navigate('/');
+    // window.location.reload();
+     console.log(token);
+
+
+  })
+  .catch((error) => {
+    // Handle error here
+   
+    console.error(error);
+  });
 
   return (
     <>

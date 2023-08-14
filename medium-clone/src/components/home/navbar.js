@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import logo from "./medium.png"
 import SearchPosts from "./searchedPost";
 
+
 const Navbar = () => {
 
   const [Searchterm, setSearchTerm] = useState('');
@@ -77,6 +78,9 @@ const Navbar = () => {
                   My Posts
                 </Link>
               </li>
+
+             
+
               <li>
                 <Link
                   to="/write"
@@ -85,6 +89,16 @@ const Navbar = () => {
                   Add Post
                 </Link>
               </li>
+              
+              <li>
+                <Link
+                  to="/subscription"
+                  class="block py-2 pl-3 text-2xl pr-4 mr-8 bg-blue-950 hover:bg-blue-900 text-white rounded-3xl "
+                >
+                  <span className="p-10 rounded-2xl">Subscription</span>
+                </Link>
+              </li>
+
             {
               !token?(<>
                

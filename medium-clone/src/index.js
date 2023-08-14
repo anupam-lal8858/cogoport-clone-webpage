@@ -11,6 +11,7 @@ import AddPost from './components/post/addPost';
 import Profile from './components/profile/profile'
 import PostDetail from './components/post/postDetail';
 import Footer from './components/home/footer';
+import SubscriptionForm from "./components/subscription/subscription";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,6 +29,7 @@ root.render(
         <Route path='/write' element = {<AddPost/>}/>
         <Route path=':id' element={<PostDetail/>}/>
         <Route path="/" element={<App/>}/>
+        <Route path="/subscription" element={<SubscriptionForm/>}/>
       </Routes>
      <div className=' bottom-0'>
        <Footer/>
